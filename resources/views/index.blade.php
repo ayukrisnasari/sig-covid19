@@ -3,6 +3,7 @@
 <head>
   <title>Data Covid-19 Provinsi Bali</title>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -30,6 +31,15 @@
         padding: 0;
         margin: 0;
     }
+    @font-face {
+            font-family: 'ProximaNovaReg';
+            src: url('/fonts/ProximaNova-Regular.woff');
+        }
+    .gradient-header-big {
+            color: white;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(176,24,49,1) 0%, rgba(242,57,57,1) 35%, rgba(255,255,255,1) 100%);
+        }
 </style>
 </head>
 <body>
@@ -38,150 +48,155 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand ml-5" href="/">
       <img src="https://4.bp.blogspot.com/-ELlrLdH0frM/WSz4AjqIWaI/AAAAAAAAASY/EF5ayA5zXn05TXw53cRUVTJeh6lzUJDDwCLcB/s400/Lambang%2BDaerah%2BProvinsi%2BBali%2B2.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      Provinsi Bali
+  
     </a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/data">Data</a>
-        </li>
-      </ul>
-    </div>
+    
+    <div class="collapse navbar-collapse" style="padding-left:50px;padding-right:50px;" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="/data">Kelola Data</a>
+			</li>
+			
+		</ul>
+	</div>
 </nav>
+<div class="container-fluid p-0">
+        <div class="gradient-header-big">
+            <div class="row m-0" style="">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 text-center" style="padding-bottom:100px;">
+                    <div class="row justify-content-center">
+                            <h1 style="padding-top:100px;">
+                                <span class="py-3" id="text-beranda">
+                                    PROVINSI BALI TANGGAP COVID-19                                </span>
+                            </h1>
+                    </div>
+                    
+                </div>
+                <div class="col-md-2"></div>                    
+            </div>
+        </div>
+    </div>
 
-<div class="container mt-4">
-    <h4 >Data Sebaran Kasus Covid-19 Sampai Dengan Tanggal {{$tanggalSekarang}} di Bali (BALI)</h4>
-  <div class="row mt-4 mb-4">
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-header">
-              Positif
-            </div>
+<div class="mx-auto" style="bottom:0;margin-top:-80px; padding-left:300px;">
+	<div class="row">
+		<div class="col-md-2" style="margin-bottom:5px;">
+			<div class="container" style="background:#fff;border-radius:10px;padding:15px;box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);">
+				<h4 style="font-family: 'product_sansregular';text-align:center;font-size:10pt;">Positif </h4>
+				<p style="font-family: 'product_sansregular';text-align:center;color:#ca2438;font-weight:bold;font-size:20pt;margin-bottom:15px;margin-top:10px;">{{$positif[0]->positif}}</p>
+			</div>
+		</div>
+		<div class="col-md-2" style="margin-bottom:5px;">
+			<div class="container" style="background:#fff;border-radius:10px;padding:15px;box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);">
+      <h4 style="font-family: 'product_sansregular';text-align:center;font-size:10pt;">Dalam Perawatan</h4>
+				<p style="font-family: 'product_sansregular';text-align:center;color:#ca2438;font-weight:bold;font-size:20pt;margin-bottom:15px;margin-top:10px;">{{$rawat[0]->rawat}}</p>
+			</div>
+		</div>
+		<div class="col-md-2" style="margin-bottom:5px;">
+			<div class="container" style="background:#fff;border-radius:10px;padding:15px;box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);">
+      <h4 style="font-family: 'product_sansregular';text-align:center;font-size:10pt;">Sembuh </h4>
+				<p style="font-family: 'product_sansregular';text-align:center;color:#ca2438;font-weight:bold;font-size:20pt;margin-bottom:15px;margin-top:10px;">{{$sembuh[0]->sembuh}}</p>
+			</div>
+		</div>
+		<div class="col-md-2" style="margin-bottom:5px;">
+			<div class="container" style="background:#fff;border-radius:10px;padding:15px;box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);">
+			<h4 style="font-family: 'product_sansregular';text-align:center;font-size:10pt;">Meninggal </h4>
+				<p style="font-family: 'product_sansregular';text-align:center;color:#ca2438;font-weight:bold;font-size:20pt;margin-bottom:15px;margin-top:10px;">{{$meninggal[0]->meninggal}}</p>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+ 
+  <div class="row pt-1">
+        <div class="col-4">
             <div class="card-body">
-              <h5 class="card-title">Jumlah</h5>
-              <p class="card-text">{{$positif[0]->positif}} Orang</p>
-            </div>
-          </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-header">
-              Dalam Perawatan
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Jumlah</h5>
-              <p class="card-text">{{$rawat[0]->rawat}} Orang</p>
-              
-            </div>
-          </div> 
-    </div>
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-header">
-              Sembuh
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Jumlah</h5>
-              <p class="card-text">{{$sembuh[0]->sembuh}} Orang</p>
-              
-            </div>
-          </div>  
-    </div>
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-header">
-              Meninggal
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Jumlah</h5>
-              <p class="card-text">{{$meninggal[0]->meninggal}} Orang</p>
-            </div>
-          </div>    
-    </div>
-  </div>
-  <hr>
-  <div class="row mt-4">
-      <div class="col-sm-4">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Filter Data</h5>
+              <h10 style="margin-bottom:px;text-align:left;">Lihat Data Berdasarkan Tanggal</h10>
               <form action="/search" method="POST">
                 @csrf
                     <div class="form-group">
-                      <label for="exampleFormControlInput1">Tanggal</label>
                       <input type="date" class="form-control" name="tanggal" id="tanggalSearch"  @if(isset($tanggal)) value="{{$tanggal}}" @endif>
                     </div>
-                    <button type="submit" class="btn btn-success btn-flat">Cari</button>
-        
+                    <button type="submit" class="btn btn-danger btn-flat">Telusuri</button>
                 </div>
               </form>
           </div>
       </div>
-      <div class="col-sm-8">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Peta Penyebaran Covid Provinsi Bali <strong>{{$tanggalSekarang}}</strong></h5>
-              <div id="map"></div>
-            </div>
-            <div class="card-footer" style="background: white">
-              <div class="row">
-                <div class="col-6">
-                  Color Start
-                  <input type="color" value="#E5000D" class="form-control" id="colorStart">
-                </div>
-                <div class="col-6">
-                  Color End
-                  <input type="color" value="#FFFFFF" class="form-control" id="colorEnd">
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-12">
-                  <button class="btn btn-primary form-control" id="btnGenerateColor">Generate Color</button>
-                </div>
-      
-              </div>
-            </div>
-          </div>
-      </div>
-  </div>
-  <hr>
 </div>
-<div class="container">
-    <div class="row mt-4">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                <h5 class="card-title">Data Penyebaran Tanggal {{$tanggalSekarang}}</h5>
-                <div class="table-responsive">
-                  <table id="example" class="table table-striped table-dark rounded" >
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Kabupaten</th>
-                        <th scope="col">Sembuh</th>
-                        <th scope="col">Positif</th>
-                        <th scope="col">Dalam Perawatan</th>
-                        <th scope="col">Meninggal</th>
-                      </tr>
-                    </thead>
+<div class="tab-content" id="pills-tabContent">
+			<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+				<h3 style="text-align:left;margin-bottom:5px;margin-top:30px;font-family: 'product_sansregular'font-size:17pt;color:#ca2438;font-weight:bold;" class="heading-responsive text-center">Peta Sebaran  COVID-19 Per Kabupaten</h3>
+				<p style="margin-bottom:5px;text-align:left; "class="heading-responsive text-center">Data per tanggal <strong>{{$tanggalSekarang}}</strong></p><br><br>
+  </div
+</div>
+
+<div class="container tentang" style="padding-left:10px;padding-right:10px;position:relative;
+    padding-top: px;">
+	<div class="container">
+		<div class="tab-content" id="pills-tabContent">
+			<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+				<div class="row">
+					<div class="col-md-6">
+						<div id='map' style="max-height:auto; height: 665px;margin-bottom:20px; ">
+						</div>
+		
+					</div>
+					<div class="col-md-6">
+          <div class="card" style="margin-bottom:10px;">
+							<div class="card-body">
+								<h6 class="card-title" style="font-family: 'product_sansregular';font-weight:bold;margin-bottom:0px;">Data Kasus COVID-19 Provinsi Bali</h6>
+								<p class="text-left" style="font-size:9px;">Pertanggal : {{$tanggalSekarang}} </p
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<th valign="top" style="text-align:center" class="px-0" style="font-family: 'product_sansregular';">No.</th>
+												<th valign="top" style="font-family: 'product_sansregular';">Kabupaten</th>
+												<th valign="top" style="text-align:center;font-family: 'product_sansregular';">Positif</th>
+												<th valign="top" style="text-align:center;font-family: 'product_sansregular';">Sembuh</th>
+												<th valign="top" style="text-align:center;font-family: 'product_sansregular';">Dalam Perawatan</th>
+												<th valign="top" style="text-align:center;font-family: 'product_sansregular';">Meninggal</th>
+											</tr>
+										</thead>
                     <tbody>
                         @foreach ($data as $item)
                         <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $item->kabupaten }}</td>
-                        <td>{{ $item->sembuh }}</td>
-                        <td>{{ $item->positif }}</td>
-                        <td>{{ $item->rawat }}</td>
-                        <td>{{ $item->meninggal }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-danger" style="font-size:11px;font-family: 'product_sansregular';">{{ $item->positif }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-success" style="font-size:11px;font-family: 'product_sansregular';" >{{ $item->sembuh }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-warning" style="font-size:11px;font-family: 'product_sansregular';" >{{ $item->rawat }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-secondary" style="font-size:11px;font-family: 'product_sansregular';" >{{ $item->meninggal }}</td>
                         </tr>
                         @endforeach
                     </tbody>
-                </table>
-              </div>
-                </div>
-              </div> 
-        </div>
-    </div>
+										
+									</table>
+								</div><br>
+
+							</div>
+						</div>
+					</div>
+				</div>
+						
+  <div class="container-fluid" style="background-color:#FBFBFB;">
+	<div class="container">
+		<div class="row" style="padding-top:20px;padding-bottom:20px;">
+			<div class="col-md-6" id="footerLogo">
+			</div>
+			<div class="col-md-6">
+				<div class="container-fluid">
+					<p style="text-align:center;margin-top:10px;margin-bottom:0px;color:#838383;">Ni Komang Ayu  Krisnasari | 1705551046</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script src="https://pendataan.baliprov.go.id/assets/frontend/map/leaflet.markercluster-src.js"></script>
 <script type="text/javascript" class="init">

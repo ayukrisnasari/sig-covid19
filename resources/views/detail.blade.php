@@ -40,17 +40,55 @@
 
 <!-- Image and text -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand ml-5" href="/">
+    <a class="navbar-brand " href="/" style="margin-left: 100px;">
       <img src="https://4.bp.blogspot.com/-ELlrLdH0frM/WSz4AjqIWaI/AAAAAAAAASY/EF5ayA5zXn05TXw53cRUVTJeh6lzUJDDwCLcB/s400/Lambang%2BDaerah%2BProvinsi%2BBali%2B2.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      Provinsi Bali
-    </a>
+   </a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="/data">Data</a>
+          <a class="nav-link" href="/data">Kelola Data</a>
         </li>
       </ul>
     </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left Side Of Navbar -->
+      <ul class="navbar-nav mr-auto">
+
+      </ul>
+
+      <!-- Right Side Of Navbar -->
+      <ul class="navbar-nav ml-auto" style="margin-right: 100px;">
+          <!-- Authentication Links -->
+          @guest
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+              @if (Route::has('register'))
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                  </li>
+              @endif
+          @else
+              <li class="nav-item dropdown">
+                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                      {{ Auth::user()->name }} <span class="caret"></span>
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
+          @endguest
+      </ul>
+  </div>
 </nav>
 
 <div class="container">
@@ -60,7 +98,7 @@
                 <div class="card-body">
                 <h5 class="card-title">Data Penyebaran Kabupaten   {{$data[0]['kabupaten']}} </h5>
                 <div class="table-responsive">
-                  <table id="example" class="table table-striped table-dark" >
+                  <table id="example" class="table table-striped" >
                     <thead style="text-align: center">
                       <tr>
                         <th scope="col">#</th>
@@ -77,10 +115,14 @@
                         <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $item->tgl_data }}</td>
-                        <td>{{ $item->sembuh }}</td>
-                        <td>{{ $item->positif }}</td>
-                        <td>{{ $item->rawat }}</td>
-                        <td>{{ $item->meninggal }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-success" style="font-size:11px;font-family: 'product_sansregular';">{{ $item->sembuh }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-danger" style="font-size:11px;font-family: 'product_sansregular';">{{ $item->positif }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-warning" style="font-size:11px;font-family: 'product_sansregular';">{{ $item->rawat }}</td>
+                        <td>
+                        <div class="badge badge-pill badge-secondary" style="font-size:11px;font-family: 'product_sansregular';">{{ $item->meninggal }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <form action="/data/{{$item->id}}/edit" method="GET">
@@ -107,5 +149,20 @@
         </div>
     </div>
 </div>
+<div class="container-fluid" style="background-color:#FBFBFB;">
+	<div class="container">
+		<div class="row" style="padding-top:20px;padding-bottom:20px;">
+			<div class="col-md-6" id="footerLogo">
+			</div>
+			<div class="col-md-6">
+				<div class="container-fluid">
+					<p style="text-align:center;margin-top:10px;margin-bottom:0px;color:#838383;">Ni Komang Ayu  Krisnasari | 1705551046</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://pendataan.baliprov.go.id/assets/frontend/map/leaflet.markercluster-src.js"></script>
+<script type="text/javascript" class="init">
 </body>
 </html>
